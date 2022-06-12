@@ -1,0 +1,31 @@
+name: 'Deploy to test service'
+
+on:
+  push:
+    branches:    
+      - master  
+
+jobs:
+  deploy_backend:
+    name: Deploy backend
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Setup PHP
+      uses: shivammathur/setup-php@2.11.0
+      with:
+        php-version: '8.1'
+    - name: Install dependencies
+      run: |
+        composer -v
+        composer install
+    - name: Deploy backend
+      uses: SamKirkland/FTP-Deploy-Action@4.3.0
+      with:
+        server: lava.metanet.ch
+        username: restwork
+        password: ${{ secrets.FTP_PASSWORD }}
+        port: 21
+        protocol: ftp
+        local-dir: /
+        server-dir: /

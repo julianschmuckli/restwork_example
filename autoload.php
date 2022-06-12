@@ -40,12 +40,16 @@ foreach ($routes as $route) {
 // $regPattern should be using regular expression
 // Source: https://stackoverflow.com/questions/17160696/php-glob-scan-in-subfolders-for-a-file
 function rsearch($folder, $regPattern) {
-    $dir = new RecursiveDirectoryIterator($folder);
-    $ite = new RecursiveIteratorIterator($dir);
-    $files = new RegexIterator($ite, $regPattern, RegexIterator::GET_MATCH);
-    $fileList = array();
-    foreach($files as $file) {
-        $fileList = array_merge($fileList, $file);
+    try {
+        $dir = new RecursiveDirectoryIterator($folder);
+        $ite = new RecursiveIteratorIterator($dir);
+        $files = new RegexIterator($ite, $regPattern, RegexIterator::GET_MATCH);
+        $fileList = array();
+        foreach($files as $file) {
+            $fileList = array_merge($fileList, $file);
+        }
+        return $fileList;
+    } catch (Exception $e) {
+        return [];
     }
-    return $fileList;
 }
