@@ -1,2 +1,2 @@
-# restwork_example
+# RESTwork Example
 This is an example project using RESTwork.
