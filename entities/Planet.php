@@ -6,6 +6,11 @@ use Julianschmuckli\Restwork\Interfaces\Entity;
 class Planet extends Entity {
     public int $radius;
 
+    public function __construct($radius)
+    {
+        $this->radius = $radius;
+    }
+
     public function loadFromDB(DB $db): bool
     {
         return false;

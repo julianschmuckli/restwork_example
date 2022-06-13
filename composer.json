@@ -1,5 +1,5 @@
 {
     "require": {
-        "julianschmuckli/restwork": "^0.0.7"
+        "julianschmuckli/restwork": "^0.1.0"
     }
 }

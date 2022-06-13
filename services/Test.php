@@ -7,5 +7,7 @@ use Julianschmuckli\Restwork\ServiceController;
 class Test extends ServiceController implements Service {
     public function setup() {
         parent::registerRoute("helloWorld", HttpMethod::GET, "HelloWorld");
+
+        parent::registerRoute("getPlanets", HttpMethod::GET, "GetPlanets");
     }
 }
