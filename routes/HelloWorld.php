@@ -5,7 +5,7 @@ use Julianschmuckli\Restwork\Interfaces\Route;
 use Julianschmuckli\Restwork\RouteController;
 
 class HelloWorld extends RouteController implements Route {
-    private string $customText;
+    private ?string $customText;
 
     public function input($data) {
         $this->customText = $data["text"];
