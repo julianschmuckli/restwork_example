@@ -8,7 +8,9 @@ class HelloWorld extends RouteController implements Route {
     private ?string $customText;
 
     public function input($data) {
-        $this->customText = $data["text"];
+        if (isset($data["text"])) {
+            $this->customText = $data["text"];
+        }
     }
 
     public function output() : HttpResponse {
